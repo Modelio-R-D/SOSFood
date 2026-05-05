@@ -1,0 +1,103 @@
+id,sample_text,ground_truth_has_pii,pii_type,description,source
+1,48.8566 2.3522,false,none,GPS coordinates Paris,synthetic
+2,6.0366893 -4.9784965 54.0 3.0,false,none,GPS coordinates with altitude and precision,production
+3,-33.8688 151.2093,false,none,GPS coordinates Sydney (negative latitude),synthetic
+4,43.2965 5.3698,false,none,GPS coordinates Marseille,synthetic
+5,3017620422003,false,none,EAN-13 barcode Nutella,synthetic
+6,0000000000017,false,none,EAN-13 barcode with leading zeros,production
+7,5901234123457,false,none,EAN-13 barcode Polish product,synthetic
+8,0000000015707/8,false,none,EAN barcode with check digit separator,production
+9,8710398017901,false,none,EAN-13 barcode Dutch product,synthetic
+10,3560070348985,false,none,EAN-13 barcode French product,synthetic
+11,16/06/2021 16:53,false,none,Date with time (French format),production
+12,2023-01-15,false,none,ISO date format,synthetic
+13,01/01/2020 08:30,false,none,Date with time (dd/mm/yyyy),synthetic
+14,15/03/2024,false,none,Simple French date,synthetic
+15,2025-12-31,false,none,ISO date end of year,synthetic
+16,000/000/000/0017,false,none,Slash-separated product identifier,production
+17,000/000/000/5,false,none,Short slash-separated identifier,production
+18,001/234/567/890,false,none,Slash-separated administrative code,synthetic
+19,17024320-1817-4a6e-89f3-e3203273be1f,false,none,UUID identifier,production
+20,a1b2c3d4-5678-9abc-def0-123456789abc,false,none,UUID v4 identifier,synthetic
+21,13.6857142857143,false,none,Decimal nutritional value (protein g/100g),production
+22,0.025,false,none,Small decimal value (vitamin content),synthetic
+23,99.7,false,none,Percentage decimal value,synthetic
+24,1234.56789,false,none,Scientific measurement decimal,synthetic
+25,0000000005,false,none,Leading zeros product code,production
+26,0000000000123,false,none,Leading zeros warehouse reference,synthetic
+27,00000089432,false,none,Leading zeros batch number,synthetic
+28,Energie (kJ): 1520 / Energie (kcal): 364,false,none,Nutritional info with slash separator,synthetic
+29,Proteines: 7.5g Glucides: 80.2g Lipides: 1.3g,false,none,Nutritional composition data,synthetic
+30,Temperature de stockage: -18.0 a +4.0 degres,false,none,Temperature range food storage,synthetic
+31,Lot: L2024-03-15-A / DLC: 15/09/2025,false,none,Batch number and expiry date,synthetic
+32,Code SIRET: 12345678901234,false,none,French company SIRET number (not personal),synthetic
+33,N° parcelle: 000/045/012,false,none,Land parcel reference number,synthetic
+34,Ref. analyse: 2024-0892-LAB,false,none,Laboratory analysis reference,synthetic
+35,pH: 4.52 / Aw: 0.845 / Brix: 12.0,false,none,Food physicochemical measurements,synthetic
+36,Coordonnees Lambert: 600123.45 2456789.12,false,none,Lambert coordinates (French system),synthetic
+37,Code douane: 0402 10 19,false,none,Customs tariff code with spaces,production
+38,N FINESS: 750712184,false,none,French health establishment code,synthetic
+39,Poids net: 500g / Poids brut: 520g,false,none,Net and gross weight,synthetic
+40,Code APE/NAF: 1071C,false,none,French activity code,synthetic
+41,LAB-2024-0156;Salmonella spp;negatif;48.8912 2.2387;16/06/2021 16:53;3560070348985,false,none,Complete lab analysis CSV row with GPS and date,production
+42,PREP-001;Listeria monocytogenes;<10 UFC/g;6.0366893 -4.9784965;0000000015707/8,false,none,Preparation sample CSV row with coordinates and barcode,production
+43,000/045/012;Aflatoxine B1;0.025;ug/kg;conforme;2024-03-15,false,none,Contaminant analysis row with parcel code and decimal,production
+44,8710398017901;Lait demi-ecreme UHT;Proteines: 3.2g;Lipides: 1.6g;00000089432,false,none,Product nutritional row with EAN and batch code,production
+45,17024320-1817-4a6e-89f3-e3203273be1f;resultat;13.6857142857143;mg/kg,false,none,UUID-keyed measurement row with decimal value,production
+46,01/09/2025;2006108;VILKIJA;1.114,false,none,SOS Food supply row - date barcode store quantity,production
+47,01/09/2025;23026016;MEIRONISKIS;1.113,false,none,SOS Food supply row - 8-digit barcode,production
+48,01/09/2025;24609504SSSSSK;ZIBARTONIAI;3.72,false,none,SOS Food supply row - barcode with alpha suffix,production
+49,28/06/2024;2.31E+12;PAGIRIAI;0.984,false,none,SOS Food supply row - scientific notation barcode (Excel export artifact),production
+50,01/09/2025;23622773;KARMELAVA;0.588,false,none,SOS Food supply row - small decimal quantity,production
+51,01/09/2025;24480198;DOTNUVA 1;1.107,false,none,SOS Food supply row - store name with number,production
+52,01/09/2025;2536895;KA;10.54,false,none,SOS Food supply row - short store code and large quantity,production
+53,+33 6 12 34 56 78,true,phone_eu,French mobile phone number,synthetic
+54,+33 1 42 68 53 00,true,phone_eu,French landline phone number (Paris),synthetic
+55,0044 20 7946 0958,true,phone_eu,UK phone number (London) 00-prefix,synthetic
+56,+49 30 12345678,true,phone_eu,German phone number (Berlin),synthetic
+57,+32 2 555 12 34,true,phone_eu,Belgian phone number (Brussels),synthetic
+58,+34 91 123 45 67,true,phone_eu,Spanish phone number (Madrid),synthetic
+59,+39 06 1234 5678,true,phone_eu,Italian phone number (Rome),synthetic
+60,+31 20 123 4567,true,phone_eu,Dutch phone number (Amsterdam),synthetic
+61,0033 6 98 76 54 32,true,phone_eu,French mobile 00-prefix format,synthetic
+62,+33 4 91 00 00 00,true,phone_eu,French landline (Marseille),synthetic
+63,+48 22 123 45 67,true,phone_eu,Polish phone number (Warsaw),synthetic
+64,+45 33 12 34 56,true,phone_eu,Danish phone number,synthetic
+65,jean.dupont@gmail.com,true,email,Personal Gmail address,synthetic
+66,marie.martin@yahoo.fr,true,email,Personal Yahoo France address,synthetic
+67,contact@entreprise-alimentaire.fr,true,email,Business email address,synthetic
+68,user.name+tag@domain.co.uk,true,email,Email with plus addressing,synthetic
+69,inspector@dgal.gouv.fr,true,email,Government inspector email,synthetic
+70,responsable.qualite@labo-analyse.com,true,email,Quality manager email,synthetic
+71,Fournisseur: Dupont SARL tel: +33 6 45 67 89 01,true,phone_eu,Phone embedded in supplier text,production
+72,Contact urgence: 0033 1 53 73 22 22,true,phone_eu,Emergency contact with 00-prefix,production
+73,Email du responsable: chef.equipe@usine.fr,true,email,Email in context line,production
+74,Envoyer resultats a analyse@labo-central.org,true,email,Email in instruction text,production
+75,Responsable qualite;Marie Martin;marie.martin@labo-sud.fr;+33 4 67 12 34 56,true,email,CSV row with contact info (email+phone in supplier metadata),production
+76,Contact fournisseur: +33 6 78 90 12 34 / email: fournisseur@alimentaire.com,true,phone_eu,Multi-PII supplier line found in CSV header,production
+77,+33 7 00 11 22 33,true,phone_eu,French mobile (07 range),synthetic
+78,+352 26 12 34 56,true,phone_eu,Luxembourg phone number,synthetic
+79,06 12 34 56 78,true,phone_local,French mobile local format (no prefix),synthetic
+80,01 42 68 53 00,true,phone_local,French landline local format,synthetic
+81,07 00 11 22 33,true,phone_local,French mobile local 07 range,synthetic
+82,0612345678,true,phone_local,French mobile compact no spaces,synthetic
+83,+1 202 555 0123,true,phone_non_eu,US phone number (Washington DC),synthetic
+84,+1 415 555 0198,true,phone_non_eu,US phone number (San Francisco),synthetic
+85,+81 3 1234 5678,true,phone_non_eu,Japanese phone number (Tokyo),synthetic
+86,+86 10 1234 5678,true,phone_non_eu,Chinese phone number (Beijing),synthetic
+87,+91 22 1234 5678,true,phone_non_eu,Indian phone number (Mumbai),synthetic
+88,Jean Dupont,true,name,French personal name,synthetic
+89,Marie-Claire Martin,true,name,French compound name,synthetic
+90,Dr. Pierre Lefevre,true,name,Name with title,synthetic
+91,12 rue de la Paix 75002 Paris,true,address,French postal address,synthetic
+92,24 avenue des Champs-Elysees 75008 Paris,true,address,French street address,synthetic
+93,NSS: 1 85 12 75 108 042 36,true,national_id,French social security number,synthetic
+94,Passeport: 12AB34567,true,national_id,French passport number,synthetic
+95,Permis: 0612345678912,true,national_id,French driving license number,synthetic
+96,Carte vitale: 2 93 08 99 123 456 78,true,national_id,French health card number,synthetic
+97,IBAN: FR76 3000 6000 0112 3456 7890 189,true,financial,French IBAN number,synthetic
+98,user [at] domain [dot] com,true,email_obfuscated,Obfuscated email address,synthetic
+99,jean DOT dupont AT gmail DOT com,true,email_obfuscated,Obfuscated email (DOT/AT),synthetic
+100,Adresse IP client: 192.168.1.45,true,ip_address,IPv4 address (technically PII under GDPR),synthetic
+101,Date naissance: 15/03/1985,true,dob,Date of birth,synthetic
+102,Ne(e) le 22 janvier 1990 a Lyon,true,dob,Date of birth in text,synthetic
