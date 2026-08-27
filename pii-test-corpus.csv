@@ -101,3 +101,401 @@ id,sample_text,ground_truth_has_pii,pii_type,description,source
 100,Adresse IP client: 192.168.1.45,true,ip_address,IPv4 address (technically PII under GDPR),synthetic
 101,Date naissance: 15/03/1985,true,dob,Date of birth,synthetic
 102,Ne(e) le 22 janvier 1990 a Lyon,true,dob,Date of birth in text,synthetic
+103,51.5074 -0.1278,false,none,GPS coordinates London,synthetic
+104,52.5200 13.4050,false,none,GPS coordinates Berlin,synthetic
+105,41.9028 12.4964,false,none,GPS coordinates Rome,synthetic
+106,40.4168 -3.7038,false,none,GPS coordinates Madrid,synthetic
+107,59.3293 18.0686,false,none,GPS coordinates Stockholm,synthetic
+108,48.2082 16.3738,false,none,GPS coordinates Vienna,synthetic
+109,50.8503 4.3517,false,none,GPS coordinates Brussels,synthetic
+110,38.7223 -9.1393,false,none,GPS coordinates Lisbon,synthetic
+111,4006381333931,false,none,EAN-13 barcode German product,synthetic
+112,8712566327340,false,none,EAN-13 barcode Dutch product,synthetic
+113,3017620425035,false,none,EAN-13 barcode French product,synthetic
+114,5000159484695,false,none,EAN-13 barcode UK product,synthetic
+115,80135463,false,none,EAN-8 short barcode,synthetic
+116,4260123456789,false,none,EAN-13 barcode generic,synthetic
+117,2024-07-01,false,none,ISO date,synthetic
+118,31/12/2023,false,none,French date end of year,synthetic
+119,2022-11-30 09:15,false,none,ISO datetime,synthetic
+120,05/05/2025 14:20,false,none,French datetime,synthetic
+121,2021-03-08,false,none,ISO date,synthetic
+122,3.2,false,none,Fat content g/100g,synthetic
+123,0.045,false,none,Salt content decimal,synthetic
+124,128.75,false,none,Energy value decimal,synthetic
+125,12.345678,false,none,Measurement decimal,synthetic
+126,-4.5,false,none,Storage temperature decimal,synthetic
+127,0000000042,false,none,Leading zeros product code,synthetic
+128,000000123456,false,none,Leading zeros warehouse reference,synthetic
+129,00000007,false,none,Leading zeros batch number,synthetic
+130,000/123/456,false,none,Slash-separated code,synthetic
+131,012/345/678/901,false,none,Slash administrative code,synthetic
+132,100/200/300,false,none,Slash parcel reference,synthetic
+133,12345678-901,false,none,Hyphen numeric lab reference,synthetic
+134,98765432-1234,false,none,Hyphen numeric identifier,synthetic
+135,Proteines: 12.5g Glucides: 45.0g Lipides: 8.2g,false,none,Nutritional composition,synthetic
+136,pH: 3.85 / Aw: 0.912 / Brix: 15.5,false,none,Physicochemical measurements,synthetic
+137,Energie (kJ): 890 / Energie (kcal): 213,false,none,Energy values with slash,synthetic
+138,Temperature: -20.0 a +6.0 degres,false,none,Storage temperature range,synthetic
+139,Poids net: 250g / Poids brut: 265g,false,none,Weight information,synthetic
+140,Lot: L2025-01-10-B / DLC: 10/07/2026,false,none,Batch and expiry,synthetic
+141,Code SIRET: 98765432109876,false,none,Company SIRET number,synthetic
+142,Code douane: 0403 90 11,false,none,Customs tariff code with spaces,synthetic
+143,N FINESS: 690784123,false,none,Health establishment code,synthetic
+144,Code APE/NAF: 1085Z,false,none,French activity code,synthetic
+145,N parcelle: 000/078/034,false,none,Land parcel reference number,synthetic
+146,LAB-2025-0043;Listeria;negatif;51.5074 -0.1278;05/05/2025 14:20;4006381333931,false,none,Lab analysis row GPS date barcode,synthetic
+147,PREP-014;Salmonella;<10 UFC/g;52.5200 13.4050;000000123456,false,none,Preparation row coordinates batch,synthetic
+148,000/078/034;Ochratoxine A;0.045;ug/kg;conforme;2024-07-01,false,none,Contaminant row parcel decimal date,synthetic
+149,01/09/2025;2536912;VILNIUS;2.145,false,none,Supply row date barcode store quantity,synthetic
+150,28/06/2024;3.14E+12;KAUNAS;1.278,false,none,Supply row scientific notation barcode,synthetic
+151,4260123456789;Yaourt nature;Proteines: 4.1g;Lipides: 3.2g;00000007,false,none,Product row EAN batch,synthetic
+152,12345678-901;resultat;12.345678;mg/kg,false,none,Hyphen-keyed measurement row,synthetic
+153,+33.6.12.34.56.78,true,phone_eu,French mobile dot-separated,synthetic
+154,+33-6-12-34-56-78,true,phone_eu,French mobile hyphen-separated,synthetic
+155,0033612345678,true,phone_eu,French mobile 00-prefix compact,synthetic
+156,(+33)612345678,true,phone_eu,French mobile parenthesized country code,synthetic
+157,+49 30 1234 5678,true,phone_eu,German landline spaced regrouping,synthetic
+158,0049 30 12345678,true,phone_eu,German landline 00-prefix,synthetic
+159,+32.2.555.12.34,true,phone_eu,Belgian phone dot-separated,synthetic
+160,0032 2 555 12 34,true,phone_eu,Belgian phone 00-prefix,synthetic
+161,+34-91-123-45-67,true,phone_eu,Spanish phone hyphen-separated,synthetic
+162,0034 91 123 45 67,true,phone_eu,Spanish phone 00-prefix,synthetic
+163,+39.06.1234.5678,true,phone_eu,Italian phone dot-separated,synthetic
+164,0031 20 123 4567,true,phone_eu,Dutch phone 00-prefix,synthetic
+165,+48-22-123-45-67,true,phone_eu,Polish phone hyphen-separated,synthetic
+166,0045 33 12 34 56,true,phone_eu,Danish phone 00-prefix,synthetic
+167,+352.26.12.34.56,true,phone_eu,Luxembourg phone dot-separated,synthetic
+168,0033 1 42 68 53 00,true,phone_eu,French landline 00-prefix,synthetic
+169,+33.1.42.68.53.00,true,phone_eu,French landline dot-separated,synthetic
+170,pierre.durand@orange.fr,true,email,Personal email Orange,synthetic
+171,sophie.bernard@wanadoo.fr,true,email,Personal email Wanadoo,synthetic
+172,contact@ferme-bio.fr,true,email,Business email farm,synthetic
+173,qualite@cooperative-laitiere.com,true,email,Quality department email,synthetic
+174,inspecteur@dgccrf.finances.gouv.fr,true,email,Government inspector email,synthetic
+175,j.moreau@laboratoire-nord.eu,true,email,Lab contact email,synthetic
+176,anna.schmidt@lebensmittel.de,true,email,German business email,synthetic
+177,mario.rossi@alimentari.it,true,email,Italian business email,synthetic
+178,test.user+food@domain.co.uk,true,email,Email with plus addressing,synthetic
+179,export@bodega-espanola.es,true,email,Spanish business email,synthetic
+180,directeur.qualite@usine-agro.fr,true,email,Quality director email,synthetic
+181,Envoyer a: laurent.petit@controle-sanitaire.fr,true,email,Email in instruction text,synthetic
+182,Contact labo: resultats@analyses-food.eu pour les rapports,true,email,Email embedded in text,synthetic
+183,Responsable;Paul Girard;paul.girard@labo-est.fr;service qualite,true,email,CSV row with email in supplier metadata,synthetic
+184,Fournisseur BioSud;contact commande: commande@biosud.fr;livraison,true,email,Email in supplier line,synthetic
+185,Fournisseur Martin SARL tel: +33 6 45 67 89 01,true,phone_eu,Phone embedded in supplier text,synthetic
+186,Contact urgence: 0033 1 53 73 22 22,true,phone_eu,Emergency contact 00-prefix,synthetic
+187,Appeler le +33 4 91 00 00 00 pour livraison,true,phone_eu,French landline in instruction text,synthetic
+188,Luc Fontaine,true,name,French personal name,synthetic
+189,Isabelle Rousseau,true,name,French personal name,synthetic
+190,8 rue du Marche 69001 Lyon,true,address,French postal address,synthetic
+191,15 boulevard Victor Hugo 06000 Nice,true,address,French street address,synthetic
+192,+1 212 555 0177,true,phone_non_eu,US phone New York,synthetic
+193,+61 2 1234 5678,true,phone_non_eu,Australian phone Sydney,synthetic
+194,+7 495 123 45 67,true,phone_non_eu,Russian phone Moscow,synthetic
+195,06 98 76 54 32,true,phone_local,French mobile local format,synthetic
+196,01 45 67 89 01,true,phone_local,French landline local format,synthetic
+197,NSS: 2 88 05 69 123 456 78,true,national_id,French social security number,synthetic
+198,IBAN: DE89 3704 0044 0532 0130 00,true,financial,German IBAN number,synthetic
+199,Adresse IP: 10.0.0.53,true,ip_address,IPv4 address,synthetic
+200,Date naissance: 08/11/1978,true,dob,Date of birth,synthetic
+201,Ne le 3 mars 1982 a Bordeaux,true,dob,Date of birth in text,synthetic
+202,user [at] foodmail [dot] fr,true,email_obfuscated,Obfuscated email address,synthetic
+203,12.16410 -92.90005 2009.0,false,none,GPS coordinates,synthetic
+204,-16.7036 47.2620 519.8,false,none,GPS coordinates,synthetic
+205,-78.78041 -162.59569,false,none,GPS coordinates,synthetic
+206,75.23738 87.18036,false,none,GPS coordinates,synthetic
+207,-81.2690940 -71.2404356,false,none,GPS coordinates,synthetic
+208,-59.550791 -175.547968 1308.4,false,none,GPS coordinates,synthetic
+209,45.43778 87.22258,false,none,GPS coordinates,synthetic
+210,-20.2385484 88.9432280,false,none,GPS coordinates,synthetic
+211,-2.5234 -109.4513,false,none,GPS coordinates,synthetic
+212,-15.2830094 83.7812339 1038.8,false,none,GPS coordinates,synthetic
+213,79.632841 100.724027,false,none,GPS coordinates,synthetic
+214,23.30207 69.91541,false,none,GPS coordinates,synthetic
+215,-71.9826395 133.7817262,false,none,GPS coordinates,synthetic
+216,58.1770032 -12.6677878 1972.8,false,none,GPS coordinates,synthetic
+217,1.2294070 -82.0605109,false,none,GPS coordinates,synthetic
+218,57.3910 -166.1938 2300.1,false,none,GPS coordinates,synthetic
+219,-21.70877 -125.44527 1516.8,false,none,GPS coordinates,synthetic
+220,47.82105 -14.90008,false,none,GPS coordinates,synthetic
+221,13.3160283 35.5543477,false,none,GPS coordinates,synthetic
+222,63.9694 -56.7336 1324.9,false,none,GPS coordinates,synthetic
+223,51.4194006 -95.4052092,false,none,GPS coordinates,synthetic
+224,73.4695 62.2993,false,none,GPS coordinates,synthetic
+225,33.9224405 87.5337848,false,none,GPS coordinates,synthetic
+226,-23.888516 135.593734,false,none,GPS coordinates,synthetic
+227,-14.4129642 28.0488244 657.1,false,none,GPS coordinates,synthetic
+228,77.9226 74.7381 2698.7,false,none,GPS coordinates,synthetic
+229,50.265776 85.006684,false,none,GPS coordinates,synthetic
+230,66.5119 -11.7158 931.6,false,none,GPS coordinates,synthetic
+231,-6.6540943 97.8921082,false,none,GPS coordinates,synthetic
+232,3.6398 109.3609 2138.3,false,none,GPS coordinates,synthetic
+233,6200889538704,false,none,EAN-13 barcode,synthetic
+234,3844226353287,false,none,EAN-13 barcode,synthetic
+235,9719497711961,false,none,EAN-13 barcode,synthetic
+236,6039054928212,false,none,EAN-13 barcode,synthetic
+237,5772984816065,false,none,EAN-13 barcode,synthetic
+238,2923982911894,false,none,EAN-13 barcode,synthetic
+239,4304913372349,false,none,EAN-13 barcode,synthetic
+240,9046845040728,false,none,EAN-13 barcode,synthetic
+241,6622380405434,false,none,EAN-13 barcode,synthetic
+242,3003255810818,false,none,EAN-13 barcode,synthetic
+243,9676237137630,false,none,EAN-13 barcode,synthetic
+244,5063929605826,false,none,EAN-13 barcode,synthetic
+245,4477235386067,false,none,EAN-13 barcode,synthetic
+246,7436065612778,false,none,EAN-13 barcode,synthetic
+247,5174195490627,false,none,EAN-13 barcode,synthetic
+248,1059480859674,false,none,EAN-13 barcode,synthetic
+249,4788253193011,false,none,EAN-13 barcode,synthetic
+250,6655609826584,false,none,EAN-13 barcode,synthetic
+251,5401667955023,false,none,EAN-13 barcode,synthetic
+252,2589657312577,false,none,EAN-13 barcode,synthetic
+253,8550656118740,false,none,EAN-13 barcode,synthetic
+254,7589300227248,false,none,EAN-13 barcode,synthetic
+255,1999035210973,false,none,EAN-13 barcode,synthetic
+256,5143783345061,false,none,EAN-13 barcode,synthetic
+257,7806090970230,false,none,EAN-13 barcode,synthetic
+258,2020-12-19,false,none,ISO date,synthetic
+259,17/07/2024,false,none,EU date,synthetic
+260,2018-12-06,false,none,ISO date,synthetic
+261,2021-03-11,false,none,ISO date,synthetic
+262,2024-07-12,false,none,ISO date,synthetic
+263,2022-03-13,false,none,ISO date,synthetic
+264,2020-03-10,false,none,ISO date,synthetic
+265,2018-09-19,false,none,ISO date,synthetic
+266,2018-04-12,false,none,ISO date,synthetic
+267,2019-11-23,false,none,ISO date,synthetic
+268,2025-06-05,false,none,ISO date,synthetic
+269,21/04/2020,false,none,EU date,synthetic
+270,27/12/2025,false,none,EU date,synthetic
+271,2019-01-06,false,none,ISO date,synthetic
+272,2023-05-06,false,none,ISO date,synthetic
+273,24/11/2023,false,none,EU date,synthetic
+274,09/11/2019,false,none,EU date,synthetic
+275,03/03/2025,false,none,EU date,synthetic
+276,24/05/2019,false,none,EU date,synthetic
+277,2026-09-10,false,none,ISO date,synthetic
+278,20/02/2026 23:33,false,none,Timestamp,synthetic
+279,27/04/2026 09:58,false,none,Timestamp,synthetic
+280,19/06/2018 22:37,false,none,Timestamp,synthetic
+281,2019-09-25 20:45,false,none,Timestamp,synthetic
+282,2019-11-05 13:42,false,none,Timestamp,synthetic
+283,2019-12-17 20:32,false,none,Timestamp,synthetic
+284,17/05/2026 05:57,false,none,Timestamp,synthetic
+285,26/03/2021 23:20,false,none,Timestamp,synthetic
+286,2024-07-25 10:41,false,none,Timestamp,synthetic
+287,2022-04-24 17:22,false,none,Timestamp,synthetic
+288,2019-07-01 08:28,false,none,Timestamp,synthetic
+289,01/03/2022 09:02,false,none,Timestamp,synthetic
+290,2018-02-12 19:29,false,none,Timestamp,synthetic
+291,2018-11-12 08:01,false,none,Timestamp,synthetic
+292,06/08/2020 09:23,false,none,Timestamp,synthetic
+293,468.9051742249,false,none,Nutritional decimal value,synthetic
+294,1698.3,false,none,Nutritional decimal value,synthetic
+295,641.192,false,none,Nutritional decimal value,synthetic
+296,537.12,false,none,Nutritional decimal value,synthetic
+297,-762.293225,false,none,Nutritional decimal value,synthetic
+298,1221.8,false,none,Nutritional decimal value,synthetic
+299,-48.65,false,none,Nutritional decimal value,synthetic
+300,-294.975632,false,none,Nutritional decimal value,synthetic
+301,1371.853,false,none,Nutritional decimal value,synthetic
+302,-1143.6777057171,false,none,Nutritional decimal value,synthetic
+303,-1674.6425531978,false,none,Nutritional decimal value,synthetic
+304,47.154,false,none,Nutritional decimal value,synthetic
+305,878.685,false,none,Nutritional decimal value,synthetic
+306,1287.1,false,none,Nutritional decimal value,synthetic
+307,1048.343,false,none,Nutritional decimal value,synthetic
+308,261.2188752585,false,none,Nutritional decimal value,synthetic
+309,1347.213,false,none,Nutritional decimal value,synthetic
+310,404.84,false,none,Nutritional decimal value,synthetic
+311,871.79,false,none,Nutritional decimal value,synthetic
+312,1623.44,false,none,Nutritional decimal value,synthetic
+313,0000056965,false,none,Leading-zeros identifier,synthetic
+314,000091402,false,none,Leading-zeros identifier,synthetic
+315,000068534,false,none,Leading-zeros identifier,synthetic
+316,00096222,false,none,Leading-zeros identifier,synthetic
+317,00066570,false,none,Leading-zeros identifier,synthetic
+318,00000043181,false,none,Leading-zeros identifier,synthetic
+319,00094516,false,none,Leading-zeros identifier,synthetic
+320,0000067385,false,none,Leading-zeros identifier,synthetic
+321,00000080276,false,none,Leading-zeros identifier,synthetic
+322,000003566,false,none,Leading-zeros identifier,synthetic
+323,000026375,false,none,Leading-zeros identifier,synthetic
+324,0000007528,false,none,Leading-zeros identifier,synthetic
+325,0000019451,false,none,Leading-zeros identifier,synthetic
+326,00000077239,false,none,Leading-zeros identifier,synthetic
+327,000017713,false,none,Leading-zeros identifier,synthetic
+328,042/234/712,false,none,Slash-separated identifier,synthetic
+329,000/000/000/60,false,none,Slash-separated product code,synthetic
+330,313/804/206,false,none,Slash-separated identifier,synthetic
+331,147/305/683/03,false,none,Hierarchical identifier,synthetic
+332,825/657/015,false,none,Slash-separated identifier,synthetic
+333,976/960/658/09,false,none,Hierarchical identifier,synthetic
+334,462/503/037,false,none,Slash-separated identifier,synthetic
+335,383/723/028,false,none,Slash-separated identifier,synthetic
+336,676/542/794,false,none,Slash-separated identifier,synthetic
+337,868/670/281/76,false,none,Hierarchical identifier,synthetic
+338,000/000/000/39,false,none,Slash-separated product code,synthetic
+339,000/000/000/46,false,none,Slash-separated product code,synthetic
+340,738/370/985/23,false,none,Hierarchical identifier,synthetic
+341,760/518/704/64,false,none,Hierarchical identifier,synthetic
+342,842/652/940,false,none,Slash-separated identifier,synthetic
+343,879/816/360/36,false,none,Hierarchical identifier,synthetic
+344,619/482/659,false,none,Slash-separated identifier,synthetic
+345,941/674/707,false,none,Slash-separated identifier,synthetic
+346,870694859-5233,false,none,Hyphen numeric identifier,synthetic
+347,987925881-2217,false,none,Hyphen numeric identifier,synthetic
+348,967403705-3609,false,none,Hyphen numeric identifier,synthetic
+349,29222584-8742,false,none,Hyphen numeric identifier,synthetic
+350,904909442-2661,false,none,Hyphen numeric identifier,synthetic
+351,30747757-6022,false,none,Hyphen numeric identifier,synthetic
+352,253723381-6254,false,none,Hyphen numeric identifier,synthetic
+353,579470872-6435,false,none,Hyphen numeric identifier,synthetic
+354,382316806-3416,false,none,Hyphen numeric identifier,synthetic
+355,784427764-7298,false,none,Hyphen numeric identifier,synthetic
+356,228557982-2838,false,none,Hyphen numeric identifier,synthetic
+357,787422687-5169,false,none,Hyphen numeric identifier,synthetic
+358,222168241-3230,false,none,Hyphen numeric identifier,synthetic
+359,868204496-2714,false,none,Hyphen numeric identifier,synthetic
+360,551902769-912,false,none,Hyphen numeric identifier,synthetic
+361,Temperature: -22.0 a +6.0 degres,false,none,Storage temperature range,synthetic
+362,Proteines: 6.4g Glucides: 4.9g Lipides: 32.7g,false,none,Nutritional composition,synthetic
+363,Energie (kJ): 1054 / Energie (kcal): 105,false,none,Energy values,synthetic
+364,Energie (kJ): 383 / Energie (kcal): 448,false,none,Energy values,synthetic
+365,Temperature: -15.0 a +5.0 degres,false,none,Storage temperature range,synthetic
+366,Poids net: 819g / Poids brut: 353g,false,none,Weight information,synthetic
+367,Temperature: -19.0 a +5.0 degres,false,none,Storage temperature range,synthetic
+368,Temperature: -16.0 a +4.0 degres,false,none,Storage temperature range,synthetic
+369,Poids net: 878g / Poids brut: 434g,false,none,Weight information,synthetic
+370,Proteines: 0.4g Glucides: 89.3g Lipides: 18.0g,false,none,Nutritional composition,synthetic
+371,pH: 6.06 / Aw: 0.832 / Brix: 15.6,false,none,Physicochemical measurements,synthetic
+372,Temperature: -21.0 a +4.0 degres,false,none,Storage temperature range,synthetic
+373,Energie (kJ): 678 / Energie (kcal): 178,false,none,Energy values,synthetic
+374,pH: 4.67 / Aw: 0.916 / Brix: 18.1,false,none,Physicochemical measurements,synthetic
+375,Temperature: -21.0 a +3.0 degres,false,none,Storage temperature range,synthetic
+376,Proteines: 9.4g Glucides: 15.8g Lipides: 3.0g,false,none,Nutritional composition,synthetic
+377,pH: 6.73 / Aw: 0.828 / Brix: 15.1,false,none,Physicochemical measurements,synthetic
+378,pH: 6.74 / Aw: 0.974 / Brix: 15.3,false,none,Physicochemical measurements,synthetic
+379,Poids net: 242g / Poids brut: 222g,false,none,Weight information,synthetic
+380,Energie (kJ): 1694 / Energie (kcal): 346,false,none,Energy values,synthetic
+381,LAB-2025-7765;Salmonella;00026853;913.147443;19/09/2026;86.50466 -116.19496;<10 UFC/g,false,none,Multi-field lab/supply CSV row,synthetic
+382,LAB-2021-7711;Escherichia coli;2019-05-06;874/136/420;00000082376;75.96967 149.60313 1169.7;negatif,false,none,Multi-field lab/supply CSV row,synthetic
+383,LAB-2018-7303;Plomb;17.23784 -106.43812;000/000/000/53;04/03/2022;conforme,false,none,Multi-field lab/supply CSV row,synthetic
+384,LAB-2021-1178;Aflatoxine B1;00098100;8449441944433;88.35884 -11.78257 2469.4;830/510/091;non conforme,false,none,Multi-field lab/supply CSV row,synthetic
+385,LAB-2023-5891;Ochratoxine A;5349845715109;22/04/2021;43.4976569 52.2270464;105/578/196/49;non conforme,false,none,Multi-field lab/supply CSV row,synthetic
+386,LAB-2023-6603;Ochratoxine A;-36.058031 28.874680;1259.2931293309;4250076074705;2020-11-08;negatif,false,none,Multi-field lab/supply CSV row,synthetic
+387,LAB-2025-3016;Aflatoxine B1;124/761/406/44;-73.983925 -9.175597 1498.8;negatif,false,none,Multi-field lab/supply CSV row,synthetic
+388,LAB-2020-3827;Escherichia coli;781/722/996;11/10/2024;negatif,false,none,Multi-field lab/supply CSV row,synthetic
+389,LAB-2018-4077;Listeria;094/398/597;00000072126;<10 UFC/g,false,none,Multi-field lab/supply CSV row,synthetic
+390,LAB-2019-2960;Escherichia coli;858/197/193/64;000096371;non conforme,false,none,Multi-field lab/supply CSV row,synthetic
+391,LAB-2025-2436;Aflatoxine B1;3597359087418;161.932;81.727864 95.981112;negatif,false,none,Multi-field lab/supply CSV row,synthetic
+392,LAB-2023-8784;Listeria;1767195187738;096/755/482;non conforme,false,none,Multi-field lab/supply CSV row,synthetic
+393,LAB-2019-8833;Escherichia coli;0000014997;2774622547072;64.11;-26.1652730 -111.1738014 901.9;non conforme,false,none,Multi-field lab/supply CSV row,synthetic
+394,LAB-2020-7679;Escherichia coli;00000040073;843/430/920/86;<10 UFC/g,false,none,Multi-field lab/supply CSV row,synthetic
+395,LAB-2022-0114;Plomb;00064072;7323978829500;000/000/000/16;2026-04-21;non conforme,false,none,Multi-field lab/supply CSV row,synthetic
+396,LAB-2021-9175;Listeria;2026-03-11;00072710;negatif,false,none,Multi-field lab/supply CSV row,synthetic
+397,LAB-2020-8930;Listeria;-1546.33;880/460/035/65;2021-09-22;00000085474;<10 UFC/g,false,none,Multi-field lab/supply CSV row,synthetic
+398,LAB-2025-0068;Plomb;0000096859;-642.8;conforme,false,none,Multi-field lab/supply CSV row,synthetic
+399,LAB-2020-7722;Plomb;2019-02-27;000/000/000/55;non conforme,false,none,Multi-field lab/supply CSV row,synthetic
+400,LAB-2018-7821;Salmonella;2931802270491;81.8103 -12.3314;1890.5146082919;318/949/823/38;non conforme,false,none,Multi-field lab/supply CSV row,synthetic
+401,sarah.lambert@biosud.fr,true,email,Synthetic email positive,synthetic
+402,julie.martin@controle-sanitaire.fr,true,email,Synthetic email positive,synthetic
+403,emma.schmidt@gmail.com,true,email,Synthetic email positive,synthetic
+404,marc.schmidt@outlook.com,true,email,Synthetic email positive,synthetic
+405,Envoyer a emma.martin@lebensmittel.de,true,email,Synthetic email positive,synthetic
+406,commande@supply-eu.com,true,email,Synthetic email positive,synthetic
+407,commande@analyses-food.fr,true,email,Synthetic email positive,synthetic
+408,resultats@cooperative-laitiere.eu,true,email,Synthetic email positive,synthetic
+409,pierre.henry@orange.fr,true,email,Synthetic email positive,synthetic
+410,service.client@ferme-bio.com,true,email,Synthetic email positive,synthetic
+411,commande@labo-nord.eu,true,email,Synthetic email positive,synthetic
+412,laura.henry@labo-analyse.fr,true,email,Synthetic email positive,synthetic
+413,Contact: luc.lefevre@controle-sanitaire.fr,true,email,Synthetic email positive,synthetic
+414,Email responsable: jean.moreau@labo-analyse.fr,true,email,Synthetic email positive,synthetic
+415,direction@ferme-bio.fr,true,email,Synthetic email positive,synthetic
+416,marc.vidal@controle-sanitaire.fr,true,email,Synthetic email positive,synthetic
+417,service.client@supply-eu.eu,true,email,Synthetic email positive,synthetic
+418,export@agro-test.com,true,email,Synthetic email positive,synthetic
+419,Envoyer a sophie.roux@labo-analyse.fr,true,email,Synthetic email positive,synthetic
+420,david.mercier@laposte.net,true,email,Synthetic email positive,synthetic
+421,direction@cooperative-laitiere.fr,true,email,Synthetic email positive,synthetic
+422,david.blanc@lebensmittel.de,true,email,Synthetic email positive,synthetic
+423,contact@agro-test.fr,true,email,Synthetic email positive,synthetic
+424,claire.girard@yahoo.fr,true,email,Synthetic email positive,synthetic
+425,carlos.dubois@labo-analyse.fr,true,email,Synthetic email positive,synthetic
+426,david.fontaine@yahoo.fr,true,email,Synthetic email positive,synthetic
+427,Envoyer a sarah.rousseau@yahoo.fr,true,email,Synthetic email positive,synthetic
+428,thomas.lambert@labo-analyse.fr,true,email,Synthetic email positive,synthetic
+429,Contact: thomas.lambert@gmail.com,true,email,Synthetic email positive,synthetic
+430,Contact: emma.mercier@bodega.es,true,email,Synthetic email positive,synthetic
+431,nicolas.fontaine@controle-sanitaire.fr,true,email,Synthetic email positive,synthetic
+432,Envoyer a david.rossi@outlook.com,true,email,Synthetic email positive,synthetic
+433,Contact: carlos.roux@gmail.com,true,email,Synthetic email positive,synthetic
+434,jean.rossi@alimentari.it,true,email,Synthetic email positive,synthetic
+435,qualite@supply-eu.fr,true,email,Synthetic email positive,synthetic
+436,sophie.moreau@controle-sanitaire.fr,true,email,Synthetic email positive,synthetic
+437,jean.rousseau@bodega.es,true,email,Synthetic email positive,synthetic
+438,paul.bernard@yahoo.fr,true,email,Synthetic email positive,synthetic
+439,elena.bernard@laposte.net,true,email,Synthetic email positive,synthetic
+440,david.martin@yahoo.fr,true,email,Synthetic email positive,synthetic
+441,Envoyer a pierre.moreau@labo-analyse.fr,true,email,Synthetic email positive,synthetic
+442,david.durand@controle-sanitaire.fr,true,email,Synthetic email positive,synthetic
+443,pierre.durand@outlook.com,true,email,Synthetic email positive,synthetic
+444,elena.dubois@food-control.eu,true,email,Synthetic email positive,synthetic
+445,labo@cooperative-laitiere.eu,true,email,Synthetic email positive,synthetic
+446,0033491000000,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+447,(+33)142685300,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+448,0044 20 79 46 09 58,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+449,00442079460958,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+450,(+45)33123456,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+451,(+35)226123456,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+452,+32-25-55-12-34,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+453,+44.20.79.46.09.58,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+454,00493012345678,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+455,(+33)698765432,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+456,+32.25.55.12.34,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+457,+33-61-23-45-67-8,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+458,004533123456,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+459,+33491000000,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+460,+33.49.10.00.00.0,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+461,+34-91-12-34-56-7,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+462,+33.14.26.85.30.0,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+463,+48-22-12-34-56-7,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+464,0048221234567,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+465,(+32)25551234,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+466,+48221234567,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+467,(+31)201234567,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+468,+45-33-12-34-56,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+469,+33.69.87.65.43.2,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+470,+49.30.12.34.56.78,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+471,0033 14 26 85 30 0,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+472,+33.61.23.45.67.8,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+473,0031201234567,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+474,(+39)0612345678,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+475,+35.22.61.23.45.6,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+476,+442079460958,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+477,+4533123456,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+478,(+44)2079460958,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+479,+39.06.12.34.56.78,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+480,+33-14-26-85-30-0,true,phone_eu,Synthetic EU phone (MR2 format variant),synthetic
+481,Camille Blanc,true,name,French personal name,synthetic
+482,Antoine Mercier,true,name,French personal name,synthetic
+483,Dr. Helene Fabre,true,name,Name with title,synthetic
+484,10 rue des Lilas 44000 Nantes,true,address,French postal address,synthetic
+485,5 avenue de la Gare 67000 Strasbourg,true,address,French street address,synthetic
+486,22 chemin du Moulin 31000 Toulouse,true,address,French postal address,synthetic
+487,+1 305 555 0142,true,phone_non_eu,US phone Miami,synthetic
+488,+81 6 1234 5678,true,phone_non_eu,Japanese phone Osaka,synthetic
+489,+55 11 91234 5678,true,phone_non_eu,Brazilian phone Sao Paulo,synthetic
+490,+91 80 1234 5678,true,phone_non_eu,Indian phone Bangalore,synthetic
+491,+27 21 123 4567,true,phone_non_eu,South African phone Cape Town,synthetic
+492,07 12 34 56 78,true,phone_local,French mobile local format,synthetic
+493,02 40 12 34 56,true,phone_local,French landline local format,synthetic
+494,NSS: 1 90 07 44 108 234 56,true,national_id,French social security number,synthetic
+495,Passeport: 15CD67890,true,national_id,French passport number,synthetic
+496,Adresse IP: 172.16.0.99,true,ip_address,IPv4 address,synthetic
+497,Date naissance: 12/07/1969,true,dob,Date of birth,synthetic
+498,Ne le 5 mai 1975 a Nantes,true,dob,Date of birth in text,synthetic
+499,prenom [at] domaine [dot] com,true,email_obfuscated,Obfuscated email,synthetic
+500,IBAN: IT60 X054 2811 1010 0000 0123 456,true,financial,Italian IBAN,synthetic
