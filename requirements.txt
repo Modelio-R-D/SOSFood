@@ -1,0 +1,7 @@
+# Presidio comparison baseline (Section 5.3 of the paper).
+# Python 3.10-3.13 (Presidio 2.2.362 requires <3.14).
+presidio-analyzer==2.2.362
+# spaCy model used by Presidio's default pipeline (install via the wheel below
+# if `python -m spacy download` fails on your platform):
+#   pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl
+en_core_web_lg @ https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl
