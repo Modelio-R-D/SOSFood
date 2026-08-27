@@ -17,11 +17,14 @@ configuration = {
 # Try without spaCy model first (Presidio can work with just recognizers)
 analyzer = AnalyzerEngine()
 
-CORPUS_PATH = os.path.abspath(os.path.join(
-    os.path.dirname(__file__),
-    "..", "FoodityBackEndProjectForPilots", "src", "test", "resources",
-    "pii-test-corpus.csv",
-))
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_CANDIDATES = [
+    os.path.join(_HERE, "pii-test-corpus.csv"),  # flat repository layout
+    os.path.join(_HERE, "..", "FoodityBackEndProjectForPilots", "src",
+                 "test", "resources", "pii-test-corpus.csv"),  # monorepo layout
+]
+CORPUS_PATH = next((os.path.abspath(p) for p in _CANDIDATES if os.path.exists(p)),
+                   os.path.abspath(_CANDIDATES[0]))
 
 # Only look for PHONE_NUMBER and EMAIL_ADDRESS (same scope as our system)
 ENTITIES = ["PHONE_NUMBER", "EMAIL_ADDRESS"]

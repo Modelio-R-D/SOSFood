@@ -1,0 +1,51 @@
+first name
+last name
+prénom
+adresse
+adress
+téléphone
+telephone
+courriel
+email
+mail
+code postal
+État civil
+identité 
+Date de naissance
+Numéro de plaque
+numéro de sécurité sociale
+titre de séjour
+passeport
+permis de conduire 
+Situation familiale
+composition du foyer 
+Bulletin de salaire
+avis d’imposition 
+Adresse IP
+Adresse MAC
+numéro IMEI
+Position GPS
+Position GSM
+Empreinte digitale
+réseau veineux de la main
+réseau palmaire de la main
+empreinte rétinienne 
+Condamnations pénales
+Analyse ADN 
+Acte de baptême
+acte de mariage
+Carte de syndiqué
+Relevé de compte bancaire
+relevé d’identité bancaire
+IBAN
+contact
+name
+phone number
+mobile
+address
+postal code
+zip code
+date of birth
+birth date
+social security
+SSN

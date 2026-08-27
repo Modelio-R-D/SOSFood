@@ -6,21 +6,26 @@ This directory contains the material to reproduce the evaluation (Section 5 of t
 
 ## Contents
 
-| Path | Description |
+| File | Description |
 |------|-------------|
-| `../FoodityBackEndProjectForPilots/src/test/resources/pii-test-corpus.csv` | Annotated corpus (500 samples: 300 negative / 200 positive) |
-| `../FoodityBackEndProjectForPilots/src/main/java/org/eclipse/foodity/elasticsearch/service/PersonalDataCheckService.java` | Detection service (3-layer pipeline) |
-| `../FoodityBackEndProjectForPilots/src/main/resources/keywords.txt` | 51 privacy keywords (Layer 3) |
-| `../FoodityBackEndProjectForPilots/src/test/java/.../PersonalDataCheckServiceTest.java` | 15 unit tests |
-| `../FoodityBackEndProjectForPilots/src/test/java/.../PersonalDataCheckServiceMetamorphicTest.java` | 207 generated metamorphic tests (MR1–MR4) |
-| `../FoodityBackEndProjectForPilots/src/test/java/.../PersonalDataCheckServiceCorpusTest.java` | Corpus precision/recall assertion |
+| `pii-test-corpus.csv` | Annotated corpus (500 samples: 300 negative / 200 positive) |
+| `PersonalDataCheckService.java` | Detection service (3-layer pipeline) |
+| `PersonalDataException.java`, `FileProcessingException.java`, `PersonalDataWarningConfirmationRequiredException.java` | Exceptions used by the service |
+| `keywords.txt` | 51 privacy keywords (Layer 3) |
+| `PersonalDataCheckServiceTest.java` | 15 unit tests |
+| `PersonalDataCheckServiceMetamorphicTest.java` | 207 generated metamorphic tests (MR1–MR4) |
+| `PersonalDataCheckServiceCorpusTest.java` | Corpus precision/recall assertion |
 | `gen_corpus_500.py` | Reproducible corpus generator (fixed seed) |
 | `eval_presidio.py` | Microsoft Presidio v2.2 comparison baseline |
 | `requirements.txt` | Python dependencies for the Presidio baseline |
 
 ## Reproduce the detector results (Java)
 
-From `FoodityBackEndProjectForPilots/`:
+The Java sources here are extracted from a Spring Boot / Maven module. To run the
+tests, place them in a Maven project providing `spring-boot-starter-test`, Google
+`libphonenumber`, and Lombok, with `keywords.txt` on the main classpath and
+`pii-test-corpus.csv` on the test classpath (`src/main/resources` and
+`src/test/resources`). Then:
 
 ```bash
 # Precision/recall on the corpus: expect FP=0 on 300 negatives, in-scope recall 99.3%

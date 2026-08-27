@@ -20,12 +20,14 @@ import random
 
 random.seed(20260827)
 
-CORPUS = os.path.join(
-    os.path.dirname(__file__),
-    "..", "FoodityBackEndProjectForPilots", "src", "test", "resources",
-    "pii-test-corpus.csv",
-)
-CORPUS = os.path.abspath(CORPUS)
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_CANDIDATES = [
+    os.path.join(_HERE, "pii-test-corpus.csv"),  # flat repository layout
+    os.path.join(_HERE, "..", "FoodityBackEndProjectForPilots", "src",
+                 "test", "resources", "pii-test-corpus.csv"),  # monorepo layout
+]
+CORPUS = next((os.path.abspath(p) for p in _CANDIDATES if os.path.exists(p)),
+              os.path.abspath(_CANDIDATES[0]))
 
 TARGET_NEG = 300
 TARGET_POS = 200
