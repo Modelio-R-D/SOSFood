@@ -131,4 +131,59 @@ class PersonalDataCheckServiceTest {
 		assertThrows(PersonalDataException.class, () -> service
 				.validateHardPersonalDataOnly(new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))));
 	}
+		@Test
+	void shouldFlagPhoneOnSecondLineOfMultiLineInput() {
+		String content = "harmless header line\ncontact: +33 6 12 34 56 78";
+
+		assertThrows(PersonalDataException.class, () -> service
+				.validateHardPersonalDataOnly(new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))));
+	}
+
+	@Test
+	void shouldNotFlagInternationalNumberBelowMinimumLength() {
+		String content = "+1 234 5678";
+
+		assertDoesNotThrow(() -> service
+				.validateHardPersonalDataOnly(new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))));
+	}
+
+	@Test
+	void shouldNotFlagInvalidCountryCodeNumber() {
+		String content = "+99 12 34 56 78";
+
+		assertDoesNotThrow(() -> service
+				.validateHardPersonalDataOnly(new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))));
+	}
+
+	@Test
+	void shouldNotFlagVoipNumber() {
+		String content = "+33 7 00 11 22 33";
+
+		assertDoesNotThrow(() -> service
+				.validateHardPersonalDataOnly(new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))));
+	}
+
+	@Test
+	void shouldFlagTenDigitEuropeanNumber() {
+		String content = "+32 2 555 12 34";
+
+		assertThrows(PersonalDataException.class, () -> service
+				.validateHardPersonalDataOnly(new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))));
+	}
+
+	@Test
+	void shouldRaiseWarningOnPrivacyKeyword() {
+		String content = "numero de telephone du contact";
+
+		assertThrows(PersonalDataWarningConfirmationRequiredException.class, () -> service
+				.validateForUpload(new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8)), false));
+	}
+
+	@Test
+	void shouldProceedWhenKeywordWarningsConfirmed() {
+		String content = "adresse du fournisseur";
+
+		assertDoesNotThrow(() -> service
+				.validateForUpload(new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8)), true));
+	}
 }
