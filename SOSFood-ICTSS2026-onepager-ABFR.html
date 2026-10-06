@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testing Domain-Specific Email and Phone Detection for GDPR Compliance in Cloud Food Data Lakes</title>
+<style>
+@page { size: A4; margin: 10mm; }
+body { font-family: system-ui, sans-serif; font-size: 14px; line-height: 1.3; color: #000; background: #fff; max-width: 190mm; margin: 0 auto; padding: 8px; }
+h1 { font-size: 20px; line-height: 1.2; margin: 0 0 4px; }
+h2 { font-size: 16px; margin: 4px 0 2px; }
+p { margin: 2px 0; }
+hr { border: 0; border-top: 1px solid #000; margin: 5px 0; }
+a { color: #000; }
+table { border-collapse: collapse; width: 100%; margin: 3px 0; }
+th, td { border: 1px solid #000; padding: 1px 6px; text-align: left; }
+main svg { width: 50mm; height: 50mm; float: left; margin: 0 14px 6px 0; border: 1px solid #000; }
+main section { overflow: hidden; }
+.back { break-before: page; page-break-before: always; }
+dl { margin: 4px 0; }
+dt { font-weight: bold; margin-top: 4px; }
+dd { margin: 0; }
+code { font-family: ui-monospace, monospace; font-size: 14px; word-break: break-all; }
+@media print { body { padding: 0; } }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Testing Domain-Specific Email and Phone Detection for GDPR Compliance in Cloud Food Data Lakes</h1>
+<p>Fadwa Rekik and Alessandra Bagnato, Docaposte. ICTSS 2026.</p>
+<p>Project: <strong>SOS Food</strong> (Horizon Europe, Grant Agreement No. 101134894), <a href="https://www.sosfood-project.eu/">sosfood-project.eu</a></p>
+<p>Contact: <a href="mailto:fadwa.rekik@docaposte.fr">fadwa.rekik@docaposte.fr</a>, <a href="mailto:alessandra.bagnato@docaposte.fr">alessandra.bagnato@docaposte.fr</a></p>
+<p>Corpus, tests and source: <a href="https://github.com/Modelio-R-D/SOSFoodTesting">github.com/Modelio-R-D/SOSFoodTesting</a></p>
+</header>
+
+<hr>
+
+<section id="problem">
+<h2>The problem</h2>
+<p>Providers upload CSV files (up to 1 GB) to food safety data lakes. These files should contain only measurements, but may hold emails or phone numbers, which become a GDPR liability once indexed. Generic PII detectors flag food data as phone numbers: GPS coordinates, EAN barcodes, lab references and nutritional decimals look like international phone formats. A blocked 1 GB file wastes the provider's effort, so false positives must be zero.</p>
+</section>
+
+<hr>
+
+<section id="idea">
+<h2>The idea: metamorphic testing</h2>
+<p>Our detector reads files line by line: email regex, phone candidate extraction, <strong>eight food-data exclusion filters</strong> (each born from a real production false positive), then phone validation with libphonenumber restricted to European regions. There is no cheap oracle for "does this line contain personal data", so we transform a known input and check that the verdict follows a rule. From 78 seeds (26 positive, 52 negative), four metamorphic relations generate 207 test inputs automatically. Adding a seed adds tests, with no manual writing.</p>
+</section>
+
+<hr>
+
+<section id="context">
+<h2>The context must not change the verdict</h2>
+<p><strong>MR1.</strong> A confirmed email or phone placed among food-data fields must still be blocked.</p>
+<p><strong>MR3.</strong> Food-data patterns combined with each other must still pass (66 pairwise combinations of 12 production rows).</p>
+</section>
+
+<hr>
+
+<section id="format">
+<h2>Format and case must not change the verdict</h2>
+<p><strong>MR2.</strong> A phone written with spaces, dots, hyphens, a 00 prefix, parentheses or compact is still blocked (6 variants).</p>
+<p><strong>MR4.</strong> An email in lower, upper, mixed case or with an upper-case domain is still blocked (4 variants).</p>
+</section>
+
+<hr>
+
+<section id="evaluation">
+<h2>Evaluation</h2>
+<p>500 annotated samples: 300 food data without PII, and 200 PII samples (141 in scope: emails and European international phones; 59 out of scope: names, addresses, local-format phones, etc.). 472 are synthetic, 28 come from real production uploads. Compared with Microsoft Presidio v2.2, default recognizers, same corpus.</p>
+<table>
+<tr><th>Measure</th><th>This system</th><th>Presidio</th></tr>
+<tr><td>False positives on 300 food samples</td><td>0</td><td>28</td></tr>
+<tr><td>Precision</td><td>1.000 (95% CI 0.97 to 1.0)</td><td>0.833</td></tr>
+<tr><td>In-scope recall</td><td>0.993 (140 of 141)</td><td>0.993</td></tr>
+</table>
+<p><strong>Precision</strong>: of everything flagged, the share that really is PII. Low precision means clean files get blocked.</p>
+<p><strong>Recall</strong>: of the real in-scope PII, the share that is caught. Low recall means personal data slips into the lake.</p>
+<p>The difference on food data is significant (McNemar exact test, p &lt; 10<sup>-8</sup>). The one in-scope miss is a French 07 number classified as VOIP by libphonenumber, which Presidio also misses. A mutation experiment (73 seeded faults) shows 78% killed by the suite. In production for 18 months on two European data lake platforms.</p>
+<p>Caveat: 0 false positives on 300 samples bounds the false-positive rate at 1.3% (95%). Samples are variants of seed families, not a random draw from providers.</p>
+</section>
+
+
+<main class="back" id="qr">
+<h1>QR codes: what they contain</h1>
+<p>Each code below encodes one plain web address and nothing else. Before scanning, compare the address shown by your phone with the address written here. If they differ, do not open it.</p>
+<hr>
+
+<section id="qr-sosfood">
+<h2>1. SOS Food project website</h2>
+<svg viewBox="0 0 37 37" role="img" aria-label="QR code encoding https://www.sosfood-project.eu/" shape-rendering="crispEdges"><title>QR code encoding https://www.sosfood-project.eu/</title><path fill="#fff" d="M0 0h37v37h-37z"/><path stroke="#000" d="M4 4.5h7m4 0h6m1 0h1m1 0h1m1 0h7m-29 1h1m5 0h1m3 0h2m3 0h3m1 0h2m1 0h1m5 0h1m-29 1h1m1 0h3m1 0h1m1 0h1m1 0h1m2 0h1m2 0h3m1 0h1m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m4 0h1m2 0h2m4 0h1m1 0h1m1 0h3m1 0h1m-29 1h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h2m2 0h2m3 0h1m1 0h3m1 0h1m-29 1h1m5 0h1m1 0h1m3 0h4m1 0h1m1 0h1m2 0h1m5 0h1m-29 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-17 1h3m2 0h1m1 0h2m-20 1h1m2 0h1m1 0h1m1 0h1m2 0h2m1 0h2m1 0h1m1 0h1m1 0h1m1 0h2m1 0h1m-27 1h1m1 0h2m1 0h1m1 0h1m1 0h1m3 0h6m3 0h3m2 0h2m-29 1h1m2 0h2m1 0h1m1 0h1m2 0h2m5 0h1m1 0h2m1 0h4m1 0h1m-29 1h5m5 0h2m2 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m-27 1h2m2 0h1m3 0h1m2 0h2m2 0h1m1 0h1m3 0h1m1 0h1m2 0h1m-24 1h1m1 0h1m1 0h2m1 0h1m2 0h2m5 0h1m1 0h1m1 0h1m1 0h1m-29 1h2m2 0h4m2 0h2m3 0h1m1 0h2m1 0h1m3 0h1m3 0h1m-28 1h1m1 0h2m3 0h6m2 0h5m2 0h1m1 0h1m-26 1h2m2 0h4m3 0h2m4 0h1m1 0h3m1 0h1m3 0h2m-29 1h2m1 0h1m1 0h1m1 0h2m3 0h1m1 0h1m7 0h3m1 0h1m1 0h1m-26 1h4m2 0h1m2 0h5m3 0h1m2 0h1m4 0h1m-27 1h1m1 0h1m7 0h7m1 0h1m2 0h1m-24 1h2m1 0h7m2 0h1m4 0h1m1 0h7m1 0h2m-21 1h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h1m3 0h1m1 0h1m1 0h1m-29 1h7m6 0h3m1 0h4m1 0h1m1 0h1m3 0h1m-29 1h1m5 0h1m2 0h1m1 0h1m2 0h1m1 0h5m3 0h2m1 0h1m-28 1h1m1 0h3m1 0h1m1 0h2m1 0h2m1 0h1m2 0h8m2 0h1m-28 1h1m1 0h3m1 0h1m3 0h1m1 0h2m3 0h2m4 0h1m3 0h1m-28 1h1m1 0h3m1 0h1m3 0h1m1 0h1m1 0h2m2 0h4m3 0h1m1 0h2m-29 1h1m5 0h1m1 0h3m2 0h1m3 0h2m1 0h2m1 0h1m1 0h1m1 0h2m-29 1h7m4 0h3m1 0h3m2 0h1m1 0h1m1 0h1m2 0h1"/></svg>
+<dl>
+<dt>Encoded content</dt>
+<dd><code>https://www.sosfood-project.eu/</code></dd>
+<dt>What it is</dt>
+<dd>Public website of the SOS Food project (Horizon Europe, Grant Agreement No. 101134894).</dd>
+<dt>What the code does not contain</dt>
+<dd>No link shortener, no redirect service, no tracking parameter, no phone number, no payment request. It is the address above, character for character.</dd>
+</dl>
+</section>
+
+<hr>
+
+<section id="qr-github">
+<h2>2. Source code, corpus and tests</h2>
+<svg viewBox="0 0 41 41" role="img" aria-label="QR code encoding https://github.com/Modelio-R-D/SOSFoodTesting" shape-rendering="crispEdges"><title>QR code encoding https://github.com/Modelio-R-D/SOSFoodTesting</title><path fill="#fff" d="M0 0h41v41h-41z"/><path stroke="#000" d="M4 4.5h7m2 0h2m2 0h1m1 0h1m2 0h3m2 0h1m2 0h7m-33 1h1m5 0h1m1 0h2m1 0h3m2 0h1m1 0h1m2 0h4m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h3m1 0h3m1 0h1m1 0h1m3 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h2m1 0h2m1 0h2m1 0h2m2 0h1m1 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m3 0h3m4 0h1m1 0h1m4 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m2 0h8m1 0h2m1 0h2m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-24 1h1m1 0h2m2 0h1m1 0h1m1 0h1m4 0h1m-24 1h3m1 0h2m2 0h2m1 0h7m2 0h4m5 0h2m-31 1h5m1 0h1m2 0h3m1 0h2m2 0h4m1 0h1m2 0h2m1 0h2m1 0h1m-33 1h2m4 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m4 0h2m1 0h1m1 0h3m1 0h2m-31 1h3m4 0h1m1 0h5m3 0h2m1 0h1m3 0h2m1 0h1m-29 1h3m2 0h1m2 0h6m3 0h2m1 0h5m1 0h3m2 0h1m-33 1h1m4 0h1m2 0h2m1 0h1m1 0h1m1 0h2m2 0h1m1 0h2m1 0h3m3 0h2m-31 1h3m2 0h1m2 0h2m1 0h1m3 0h2m1 0h3m4 0h1m1 0h3m-29 1h1m8 0h3m1 0h3m3 0h1m1 0h1m1 0h2m3 0h1m-26 1h3m4 0h6m1 0h5m1 0h2m1 0h3m-30 1h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h3m1 0h2m1 0h5m1 0h2m1 0h2m-33 1h1m1 0h1m2 0h4m1 0h3m1 0h3m3 0h3m1 0h1m2 0h2m1 0h2m-32 1h6m3 0h1m1 0h3m3 0h1m1 0h1m3 0h3m2 0h1m3 0h1m-33 1h3m1 0h3m2 0h1m1 0h5m1 0h1m3 0h1m6 0h3m1 0h1m-33 1h1m3 0h1m2 0h2m4 0h2m4 0h3m7 0h1m2 0h1m-31 1h1m2 0h2m1 0h1m2 0h1m3 0h1m2 0h1m1 0h2m1 0h5m3 0h2m-32 1h1m1 0h1m5 0h1m1 0h2m1 0h1m4 0h2m2 0h1m2 0h2m1 0h1m-30 1h1m4 0h3m1 0h2m2 0h5m4 0h1m1 0h9m-25 1h4m3 0h1m1 0h1m1 0h2m3 0h1m3 0h2m-30 1h7m6 0h2m4 0h2m2 0h2m1 0h1m1 0h1m-29 1h1m5 0h1m1 0h1m1 0h1m2 0h1m1 0h3m2 0h5m3 0h4m-32 1h1m1 0h3m1 0h1m6 0h2m2 0h1m1 0h1m1 0h8m1 0h3m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h6m3 0h2m1 0h1m3 0h1m3 0h2m-33 1h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h2m1 0h1m2 0h1m1 0h1m3 0h2m-28 1h1m5 0h1m1 0h1m4 0h3m3 0h2m1 0h1m2 0h1m1 0h3m2 0h1m-33 1h7m2 0h1m4 0h1m1 0h2m1 0h1m1 0h1m1 0h1m2 0h1m1 0h1m1 0h1"/></svg>
+<dl>
+<dt>Encoded content</dt>
+<dd><code>https://github.com/Modelio-R-D/SOSFoodTesting</code></dd>
+<dt>What it is</dt>
+<dd>Public GitHub repository SOSFoodTesting, in the Modelio-R-D organization: detection service, 500-sample annotated corpus and test suite described in the paper.</dd>
+<dt>What the code does not contain</dt>
+<dd>No link shortener, no redirect service, no tracking parameter, no phone number, no payment request. It is the address above, character for character.</dd>
+</dl>
+</section>
+
+<hr>
+<p>Paper: Testing Domain-Specific Email and Phone Detection for GDPR Compliance in Cloud Food Data Lakes, ICTSS 2026. Contact: fadwa.rekik@docaposte.fr, alessandra.bagnato@docaposte.fr</p>
+</main>
+
+</body>
+</html>
